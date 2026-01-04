@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Client</title>
+</head>
+<body style="background-color:LightGray">
+
+	<label for="username">Name:</label>
+	<input type="text" id="username" placeholder="Enter your name">
+	<br>
+	
+	
+	
+	<div style="background-color:white;padding: 10px;margin: 10px">
+	
+		<p id="messages" style="white-space: pre-line;"> text </p>
+		
+	</div>
+	
+	
+	<label for="message">Message:</label>
+	<input type="text" id="message" placeholder="Enter a message">
+  <button id="send">Send Message</button>
+
+  <script>
+    console.log("Client started");
+	
+	
+	const name = document.getElementById("username");
+	const messsage = document.getElementById("message");
+	
+	name.value = "Person " + Math.ceil(Math.random() * 99);
+
+    // Connect to the server
+    const socket = new WebSocket("ws://localhost:8080");
+
+    socket.onopen = () => {
+      console.log("Connected to server");
+    };
+
+    socket.onmessage = (event) => {
+	
+		const messsages = document.getElementById("messages");
+
+      messsages.textContent = event.data;
+    };
+
+    socket.onclose = () => {
+      console.log("Connection closed");
+    };
+
+    document.getElementById("send").onclick = () => {
+		
+      console.log("Sending message");
+      socket.send(name.value + ": " + message.value);
+    };
+  </script>
+</body>
+</html>
