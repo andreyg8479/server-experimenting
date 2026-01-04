@@ -32,7 +32,7 @@
 	name.value = "Person " + Math.ceil(Math.random() * 99);
 
     // Connect to the server
-    const socket = new WebSocket("ws://localhost:8080");
+    const socket = new WebSocket("wss://server-experimenting-production.up.railway.app");
 
     socket.onopen = () => {
       console.log("Connected to server");
