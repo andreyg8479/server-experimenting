@@ -10,7 +10,7 @@ console.log(`Server running at ws://localhost:${PORT}`);
 
 
 
-messages = " \n \n \n \n \n \n \n \n Old Test \n Test";
+messages = " \n \n \n \n \n \n \n \n \n>>> This is the Start of the Chat";
 
 // Runs when a browser connects
 wss.on("connection", (socket) => {
@@ -47,3 +47,4 @@ wss.on("connection", (socket) => {
     console.log("Client disconnected");
   });
 });
+
